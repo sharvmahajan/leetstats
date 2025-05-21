@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Stats</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="media\LeetCode_Sharing.png" type="image/x-icon">
+</head>
+<body>
+    <div class="stats-box">
+    <div class="header-row">
+        <span class="leetcode-logo">LeetCode</span>
+        <span class="user-rank" id="user-rank">#--</span>
+    </div>
+    <div class="search-row">
+        <input type="text" id="username" placeholder="Enter username">
+        <button id="search-btn">Search</button>
+    </div>
+    <div class="circle-score">
+        <div class="circle-progress">
+            <span class="circle-text" id="total-solved">--</span>
+        </div>
+    </div>
+    <div class="levels">
+        <div class="level-row">
+            <div class="level-bar easy"></div>
+            <span class="level-label">Easy</span>
+            <span class="level-stats" id="easy-stats">-- / --</span>
+        </div>
+        <div class="level-row">
+            <div class="level-bar medium"></div>
+            <span class="level-label">Medium</span>
+            <span class="level-stats" id="medium-stats">-- / --</span>
+        </div>
+        <div class="level-row">
+            <div class="level-bar hard"></div>
+            <span class="level-label">Hard</span>
+            <span class="level-stats" id="hard-stats">-- / --</span>
+        </div>
+    </div>
+</div>
+<script src="scripts.js"></script>
+</body>
+</html>

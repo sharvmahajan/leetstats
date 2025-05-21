@@ -1,0 +1,104 @@
+body {
+    background: #181818;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+.stats-box {
+    background: #222;
+    border-radius: 12px;
+    padding: 24px 32px;
+    width: 340px;
+    margin: 40px auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#username {
+    border-radius: 5px;
+}
+#search-btn {
+    border-radius: 5px;
+}
+.leetcode-logo {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.user-rank {
+    color: #aaa;
+    font-size: 0.95em;
+}
+.circle-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px 0;
+}
+
+.circle-progress {
+    width: 120px; /* Slightly larger for big numbers */
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #ffb800 0% 60%,   /* Progress color: up to 60% */
+        #333 0% 100%      /* Remainder: dark gray */
+    );
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-progress::before {
+    content: "";
+    position: absolute;
+    width: 90px;  /* Adjusted for larger circle */
+    height: 90px;
+    background: #222;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+.circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: #fff;
+    font-size: 2.1em;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+.levels {
+    margin-top: 10px;
+}
+.level-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.level-bar {
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+.easy { background: #38d39f; }
+.medium { background: #ffb800; }
+.hard { background: #ff6363; }
+.level-label {
+    width: 60px;
+}
+.level-stats {
+    color: #aaa;
+    font-size: 0.95em;
+}
