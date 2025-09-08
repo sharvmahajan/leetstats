@@ -1,104 +1,443 @@
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #64748b;
+    --background-color: #f8fafc;
+    --surface-color: #ffffff;
+    --border-color: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    
+    /* Difficulty Colors */
+    --easy-color: #22c55e;
+    --medium-color: #f59e0b;
+    --hard-color: #ef4444;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+}
+
 body {
-    background: #181818;
-    color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 14px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
 }
-.stats-box {
-    background: #222;
-    border-radius: 12px;
-    padding: 24px 32px;
-    width: 340px;
-    margin: 40px auto;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
-.header-row {
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-#username {
-    border-radius: 5px;
-}
-#search-btn {
-    border-radius: 5px;
-}
-.leetcode-logo {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-.user-rank {
-    color: #aaa;
-    font-size: 0.95em;
-}
-.circle-score {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 32px 0;
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
 }
 
-.circle-progress {
-    width: 120px; /* Slightly larger for big numbers */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+}
+
+.user-rank {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    background-color: var(--surface-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.input-group {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.search-input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-family: inherit;
+    background-color: var(--surface-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-button {
+    position: relative;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.search-button:active {
+    transform: translateY(1px);
+}
+
+.search-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.button-text {
+    transition: opacity 0.2s ease;
+}
+
+.loading-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    position: absolute;
+}
+
+.search-button.loading .button-text {
+    opacity: 0;
+}
+
+.search-button.loading .loading-spinner {
+    display: block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-md);
+    color: #dc2626;
+    font-size: 0.875rem;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Stats Container */
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* Overview Card */
+.overview-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.progress-section {
+    display: flex;
+    justify-content: center;
+}
+
+.progress-circle {
+    position: relative;
+    width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: conic-gradient(
-        #ffb800 0% 60%,   /* Progress color: up to 60% */
-        #333 0% 100%      /* Remainder: dark gray */
-    );
-    position: relative;
-    margin: 0 auto;
+    background: conic-gradient(var(--primary-color) 0% 0%, #e2e8f0 0% 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
-.circle-progress::before {
-    content: "";
+.progress-circle::before {
+    content: '';
     position: absolute;
-    width: 90px;  /* Adjusted for larger circle */
+    width: 90px;
     height: 90px;
-    background: #222;
+    background-color: var(--surface-color);
     border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-.circle-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    color: #fff;
-    font-size: 2.1em;
-    font-weight: bold;
-    text-align: center;
-    white-space: nowrap;
-    letter-spacing: 1px;
 }
 
-.levels {
-    margin-top: 10px;
+.progress-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
 }
-.level-row {
+
+.progress-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.progress-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--spacing-xs);
+}
+
+/* Difficulty Grid */
+.difficulty-grid {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: 1fr;
+}
+
+.difficulty-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.difficulty-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.difficulty-header {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
 }
-.level-bar {
-    width: 40px;
+
+.difficulty-icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.difficulty-card.easy .difficulty-icon {
+    background-color: var(--easy-color);
+}
+
+.difficulty-card.medium .difficulty-icon {
+    background-color: var(--medium-color);
+}
+
+.difficulty-card.hard .difficulty-icon {
+    background-color: var(--hard-color);
+}
+
+.difficulty-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.difficulty-stats {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.solved-count {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.total-count {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
     height: 4px;
+    background-color: var(--border-color);
     border-radius: 2px;
-    margin-right: 10px;
+    overflow: hidden;
 }
-.easy { background: #38d39f; }
-.medium { background: #ffb800; }
-.hard { background: #ff6363; }
-.level-label {
-    width: 60px;
+
+.progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    width: 0%;
 }
-.level-stats {
-    color: #aaa;
-    font-size: 0.95em;
+
+.easy-fill {
+    background-color: var(--easy-color);
+}
+
+.medium-fill {
+    background-color: var(--medium-color);
+}
+
+.hard-fill {
+    background-color: var(--hard-color);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .container {
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .search-button {
+        align-self: flex-start;
+    }
+    
+    .progress-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .progress-circle::before {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .progress-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 640px) {
+    .difficulty-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .search-section {
+        display: none;
+    }
+    
+    .container {
+        box-shadow: none;
+    }
+    
+    .difficulty-card,
+    .overview-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
 }

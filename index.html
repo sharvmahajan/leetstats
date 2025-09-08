@@ -3,43 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeetCode Stats</title>
+    <title>LeetCode Statistics Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="media\LeetCode_Sharing.png" type="image/x-icon">
+    <link rel="shortcut icon" href="media/LeetCode_Sharing.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="stats-box">
-    <div class="header-row">
-        <span class="leetcode-logo">LeetCode</span>
-        <span class="user-rank" id="user-rank">#--</span>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">LeetCode Statistics</h1>
+                <div class="user-rank" id="user-rank">Rank: --</div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="search-section">
+                <div class="input-group">
+                    <label for="username" class="sr-only">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        class="search-input" 
+                        placeholder="Enter LeetCode username"
+                        autocomplete="off"
+                    >
+                    <button id="search-btn" class="search-button">
+                        <span class="button-text">Search</span>
+                        <div class="loading-spinner" id="loading-spinner"></div>
+                    </button>
+                </div>
+                <div class="error-message" id="error-message"></div>
+            </div>
+
+            <div class="stats-container">
+                <div class="overview-card">
+                    <div class="progress-section">
+                        <div class="progress-circle" id="progress-circle">
+                            <div class="progress-inner">
+                                <span class="progress-value" id="total-solved">0</span>
+                                <span class="progress-label">Total Solved</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="difficulty-grid">
+                    <div class="difficulty-card easy">
+                        <div class="difficulty-header">
+                            <div class="difficulty-icon"></div>
+                            <h3 class="difficulty-title">Easy</h3>
+                        </div>
+                        <div class="difficulty-stats">
+                            <span class="solved-count" id="easy-solved">0</span>
+                            <span class="total-count">/ <span id="easy-total">0</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill easy-fill" id="easy-progress"></div>
+                        </div>
+                    </div>
+
+                    <div class="difficulty-card medium">
+                        <div class="difficulty-header">
+                            <div class="difficulty-icon"></div>
+                            <h3 class="difficulty-title">Medium</h3>
+                        </div>
+                        <div class="difficulty-stats">
+                            <span class="solved-count" id="medium-solved">0</span>
+                            <span class="total-count">/ <span id="medium-total">0</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill medium-fill" id="medium-progress"></div>
+                        </div>
+                    </div>
+
+                    <div class="difficulty-card hard">
+                        <div class="difficulty-header">
+                            <div class="difficulty-icon"></div>
+                            <h3 class="difficulty-title">Hard</h3>
+                        </div>
+                        <div class="difficulty-stats">
+                            <span class="solved-count" id="hard-solved">0</span>
+                            <span class="total-count">/ <span id="hard-total">0</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill hard-fill" id="hard-progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="search-row">
-        <input type="text" id="username" placeholder="Enter username">
-        <button id="search-btn">Search</button>
-    </div>
-    <div class="circle-score">
-        <div class="circle-progress">
-            <span class="circle-text" id="total-solved">--</span>
-        </div>
-    </div>
-    <div class="levels">
-        <div class="level-row">
-            <div class="level-bar easy"></div>
-            <span class="level-label">Easy</span>
-            <span class="level-stats" id="easy-stats">-- / --</span>
-        </div>
-        <div class="level-row">
-            <div class="level-bar medium"></div>
-            <span class="level-label">Medium</span>
-            <span class="level-stats" id="medium-stats">-- / --</span>
-        </div>
-        <div class="level-row">
-            <div class="level-bar hard"></div>
-            <span class="level-label">Hard</span>
-            <span class="level-stats" id="hard-stats">-- / --</span>
-        </div>
-    </div>
-</div>
-<script src="scripts.js"></script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
