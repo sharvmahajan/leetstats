@@ -210,7 +210,6 @@ class LeetCodeStats {
         } else if (error.message.includes('HTTP error')) {
             message = 'Server error. Please try again later.';
         }
-        
         this.showError(message);
     }
 
@@ -221,6 +220,31 @@ class LeetCodeStats {
     showError(message) {
         this.elements.errorMessage.textContent = message;
         this.elements.errorMessage.classList.add('show');
+
+        // Reset rank & total solved
+        this.elements.userRank.textContent = "Rank: --";
+        this.elements.totalSolved.textContent = "0";
+
+        // Reset Easy stats
+        this.elements.easySolved.textContent = "0";
+        this.elements.easyTotal.textContent = "0";
+        this.elements.easyProgress.style.width = "0%";
+
+        // Reset Medium stats
+        this.elements.mediumSolved.textContent = "0";
+        this.elements.mediumTotal.textContent = "0";
+        this.elements.mediumProgress.style.width = "0%";
+
+        // Reset Hard stats
+        this.elements.hardSolved.textContent = "0";
+        this.elements.hardTotal.textContent = "0";
+        this.elements.hardProgress.style.width = "0%";
+
+        // Reset overall progress circle
+        this.elements.progressCircle.style.background = `conic-gradient(
+            var(--primary-color) 0% 0%, 
+            #e2e8f0 0% 100%
+        )`;
     }
 
     /**
